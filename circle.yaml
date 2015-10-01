@@ -1,0 +1,25 @@
+## update version on every release
+machine:
+  environment:
+    version: 0.1.0
+    testport: 8140
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t abstractit/puppetserver:$version .
+
+# test:
+#   override:
+#     - docker run -d -v ./puppet_var:/var/lib/puppet -p 8140:8140 -p 8139:8139 abstractit/puppetserver; sleep 60
+#     - curl --retry 10 --retry-delay 5 -v http://localhost:8140
+
+deployment:
+  hub:
+    branch: master
+    tag: /([0-9]+\.[0-9]+\.[0-9]+)/
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push abstractit/puppetserver:$version
