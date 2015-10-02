@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - docker run -d --name puppetserver -p 8140:8140 -p 8139:8139 -v /var/tmp/puppet_var:/var/lib/puppet abstractit/puppetserver:$version; sleep 60
+    - docker run -d --name puppetserver -p 8140:8140 -p 8139:8139 abstractit/puppetserver:$version; sleep 60
     - docker logs puppetserver | grep "Puppet Server has successfully started"
 
 deployment:
