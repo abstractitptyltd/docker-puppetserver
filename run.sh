@@ -16,7 +16,7 @@ JAVA_BIN="/usr/bin/java"
 JAVA_ARGS="-Xms$PUPPETSERVER_JAVA_RAM -Xmx$PUPPETSERVER_JAVA_RAM -XX:MaxPermSize=256m"
 
 # These normally shouldn't need to be edited if using OS packages
-USER="puppet"
+USER="$PUPPETSERVER_USER"
 INSTALL_DIR="/usr/share/puppetserver"
 CONFIG="/etc/puppetserver/conf.d"
 BOOTSTRAP_CONFIG="/etc/puppetserver/bootstrap.cfg"
