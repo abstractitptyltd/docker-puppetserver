@@ -1,4 +1,5 @@
 # abstractit/puppetserver
+[![Circle CI](https://circleci.com/gh/abstractitptyltd/docker-puppetserver.svg?style=svg)](https://circleci.com/gh/abstractitptyltd/docker-puppetserver)
 
 Setup the new PuppetLabs Puppetserver as a Docker container.
 Support is pretty basic at the moment but that will grow as I add more features.

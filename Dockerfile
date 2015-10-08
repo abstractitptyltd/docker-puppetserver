@@ -1,19 +1,20 @@
-FROM abstractit/puppet-base:0.1.1
+FROM abstractit/puppet-base:0.1.3
 MAINTAINER Abstract IT Pty Ltd <dev@abstractit.com.au>
-LABEL vendor="Abstract IT Pty Ltd"
-LABEL au.com.abstractit.version="0.1.1"
-LABEL au.com.abstractit.is-beta="true"
-LABEL au.com.abstractit.release-date="2015-09-26"
+LABEL vendor="Abstract IT Pty Ltd" \
+  au.com.abstractit.version="0.1.2" \
+  au.com.abstractit.is-beta="true" \
+  au.com.abstractit.release-date="2015-10-08"
 
-ENV PUPPETSERVER_VERSION="1.1.1"
-ENV PUPPETDB_VERSION="2.3.7"
-ENV PUPPETSERVER_JAVA_RAM="2g"
-ENV AUTOSIGN_DOMAIN="*.example.com"
-ENV PUPPETSERVER_USER="puppet"
+ENV PUPPETSERVER_VERSION="1.1.1" \
+  PUPPETDB_VERSION="2.3.7" \
+  PUPPETSERVER_JAVA_RAM="2g" \
+  AUTOSIGN_DOMAIN="*.example.com" \
+  PUPPETSERVER_USER="puppet"
 
-RUN yum install -y puppetserver-$PUPPETSERVER_VERSION puppetdb-terminus-$PUPPETDB_VERSION
-
-RUN yum -y clean all
+RUN yum install -y \
+  puppetserver-$PUPPETSERVER_VERSION \
+  puppetdb-terminus-$PUPPETDB_VERSION \
+  && yum -y clean all
 
 # install hiera-eyaml
 RUN puppetserver gem install hiera-eyaml
