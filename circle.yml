@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - docker run -d --name puppetservertest -e PUPPETSERVER_JAVA_RAM="512m" -p 8140:8140 -p 8139:8139 abstractit/puppetserver:$version; sleep 60
+    - docker run -d --name puppetservertest -e PUPPETSERVER_JAVA_RAM="1024m" -p 8140:8140 -p 8139:8139 abstractit/puppetserver:$version; sleep 90
     - docker logs puppetservertest | grep "Puppet Server has successfully started"
 
 deployment:
